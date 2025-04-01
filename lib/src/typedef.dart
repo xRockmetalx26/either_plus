@@ -1,4 +1,3 @@
-// Package imports:
 import 'package:either_plus/src/either_plus.dart';
 import 'package:either_plus/src/app_error.dart';
 
