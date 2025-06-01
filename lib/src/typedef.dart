@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:either_plus/src/errors.dart';
-import 'package:either_plus/src/either_plus.dart';
+import 'package:either_plus/src/either.dart';
 
 /// Either of Error or T
 typedef EValue<T> = Either<EitherError, T>;
