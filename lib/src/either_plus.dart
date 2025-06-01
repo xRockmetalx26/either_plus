@@ -1,11 +1,11 @@
-import 'package:either_plus/src/app_error.dart';
+import 'package:either_plus/src/either_error.dart';
 
 /// Represents a value of one of two possible types.
 /// Instances of [Either] are either an instance of [Error] or [Value].
 ///
 /// [Error] is used for "error".
 /// [Value] is used for "value".
-sealed class Either<E extends AppError, V> {
+sealed class Either<E extends EitherError, V> {
   const Either();
 
   /// Represents the left side of [Either] class which by convention is a "Error".
@@ -17,14 +17,14 @@ sealed class Either<E extends AppError, V> {
   /// Get [Error] value, may throw an exception when the value is [Value]
   E get error => this.fold<E>(
         (e) => e,
-        (v) => throw Exception(
-            'Illegal use. You should check hasError before calling'),
+        (v) => throw StateError(
+            'Illegal use. You should check isError before calling'),
       );
 
   /// Get [Value] value, may throw an exception when the value is [Error]
   V get value => this.fold<V>(
-        (e) => throw Exception(
-            'Illegal use. You should check hasValue before calling'),
+        (e) => throw StateError(
+            'Illegal use. You should check isValue before calling'),
         (v) => v,
       );
 
@@ -36,8 +36,8 @@ sealed class Either<E extends AppError, V> {
 
   @override
   bool operator ==(Object obj) => this.fold(
-        (e) => obj is Error && e == obj.value,
-        (v) => obj is Value && v == obj.value,
+        (e) => obj is Error && e == obj.arg,
+        (v) => obj is Value && v == obj.arg,
       );
 
   @override
@@ -48,10 +48,10 @@ sealed class Either<E extends AppError, V> {
 }
 
 /// Used for "error"
-final class Error<E extends AppError, V> extends Either<E, V> {
-  const Error(this._v);
+final class Error<E extends EitherError, V> extends Either<E, V> {
+  const Error(E error) : this.arg = error;
 
-  final E _v;
+  final E arg;
 
   @override
   String toString() => error.toString();
@@ -61,14 +61,14 @@ final class Error<E extends AppError, V> extends Either<E, V> {
     T Function(E error) fnE,
     T Function(V value) fnV,
   ) =>
-      fnE(_v);
+      fnE(arg);
 }
 
 /// Used for "value"
-final class Value<E extends AppError, V> extends Either<E, V> {
-  const Value(this._v);
+final class Value<E extends EitherError, V> extends Either<E, V> {
+  const Value(V value) : this.arg = value;
 
-  final V _v;
+  final V arg;
 
   @override
   String toString() => value.toString();
@@ -78,5 +78,5 @@ final class Value<E extends AppError, V> extends Either<E, V> {
     T Function(E error) fnE,
     T Function(V value) fnV,
   ) =>
-      fnV(_v);
+      fnV(arg);
 }

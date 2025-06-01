@@ -1,12 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-abstract class AppError extends Equatable {
-  const AppError(
+abstract class EitherError extends Equatable {
+  const EitherError(
     this.message, [
     this.code,
   ]);
-
-  static const defaultCode = null;
 
   final String message;
   final int? code;

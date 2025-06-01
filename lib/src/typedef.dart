@@ -1,17 +1,20 @@
+import 'package:either_plus/src/either_error.dart';
 import 'package:either_plus/src/either_plus.dart';
-import 'package:either_plus/src/app_error.dart';
 
-/// Json format
-typedef Json = Map<String, dynamic>;
+/// Either of Error or T
+typedef EValue<T> = Either<EitherError, T>;
 
-/// Either of Failure or T
-typedef EValue<T> = Either<AppError, T>;
-
-/// Future of Either of Failure or T
+/// Future of Either of Error or T
 typedef FEValue<T> = Future<EValue<T>>;
 
-/// Either of Failure or List of T
-typedef EList<T> = Either<AppError, List<T>>;
+/// Either of Error or List of T
+typedef EList<T> = Either<EitherError, List<T>>;
 
-/// Future of Either of Failure or List of T
+/// Future of Either of Error or List of T
 typedef FEList<T> = Future<EList<T>>;
+
+/// Either of Error or Json
+typedef EJson = Either<EitherError, Map<String, dynamic>>;
+
+/// Future of Either of Error or Json
+typedef FEJson = Future<EJson>;
