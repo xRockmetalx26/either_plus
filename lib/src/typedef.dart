@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:either_plus/src/either_error.dart';
 import 'package:either_plus/src/either_plus.dart';
 
@@ -7,14 +8,23 @@ typedef EValue<T> = Either<EitherError, T>;
 /// Future of Either of Error or T
 typedef FEValue<T> = Future<EValue<T>>;
 
+/// Future or Either of Error or T
+typedef FOEValue<T> = FutureOr<EValue<T>>;
+
 /// Either of Error or List of T
 typedef EList<T> = Either<EitherError, List<T>>;
 
 /// Future of Either of Error or List of T
 typedef FEList<T> = Future<EList<T>>;
 
+/// Future or Either of Error or List of T
+typedef FOEList<T> = FutureOr<EList<T>>;
+
 /// Either of Error or Json
 typedef EJson = Either<EitherError, Map<String, dynamic>>;
 
 /// Future of Either of Error or Json
 typedef FEJson = Future<EJson>;
+
+/// Future or Either of Error or Json
+typedef FOEJson = FutureOr<EJson>;

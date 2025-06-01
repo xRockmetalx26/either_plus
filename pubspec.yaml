@@ -1,6 +1,6 @@
 name: either_plus
 description: Either with EitherError class for Dart.
-version: 2.0.0
+version: 2.0.1
 repository: https://github.com/xRockmetalx26/either_plus
 
 environment:
