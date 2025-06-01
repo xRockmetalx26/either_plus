@@ -3,10 +3,12 @@ import 'package:equatable/equatable.dart';
 abstract class EitherError extends Equatable {
   const EitherError(
     this.message, [
+    this.details,
     this.code,
   ]);
 
   final String message;
+  final String? details;
   final int? code;
 
   String get description =>
@@ -15,6 +17,7 @@ abstract class EitherError extends Equatable {
   @override
   List<Object?> get props => [
         message,
+        details,
         code,
       ];
 }

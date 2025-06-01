@@ -1,4 +1,4 @@
-import 'package:either_plus/src/either_error.dart';
+import 'package:either_plus/src/errors.dart';
 
 /// Represents a value of one of two possible types.
 /// Instances of [Either] are either an instance of [Error] or [Value].
