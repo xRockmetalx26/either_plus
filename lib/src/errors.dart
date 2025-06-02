@@ -2,14 +2,16 @@ import 'package:equatable/equatable.dart';
 
 abstract class EitherError extends Equatable {
   const EitherError(
-    this.message, [
+    this.message, {
     this.details,
     this.code,
-  ]);
+    this.exception,
+  });
 
   final String message;
   final String? details;
   final int? code;
+  final dynamic exception;
 
   String get description =>
       '$message${code is int ? ' (${code! + 2000})' : ''}';
@@ -19,5 +21,6 @@ abstract class EitherError extends Equatable {
         message,
         details,
         code,
+        exception,
       ];
 }
