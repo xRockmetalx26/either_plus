@@ -24,3 +24,12 @@ abstract class EitherError extends Equatable {
         exception,
       ];
 }
+
+final class DefaultError extends EitherError {
+  const DefaultError(
+    super.message, {
+    super.details,
+    super.code,
+    super.exception,
+  });
+}
