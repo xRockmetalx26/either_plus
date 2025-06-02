@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 abstract class EitherError extends Equatable {
-  const EitherError(
-    this.message, {
+  const EitherError({
+    required this.message,
     this.details,
     this.code,
     this.exception,
