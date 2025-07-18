@@ -15,7 +15,7 @@ typedef EList<T> = Either<EitherError, List<T>>;
 typedef FEList<T> = Future<EList<T>>;
 
 /// Either of Error or Json
-typedef EJson = Either<EitherError, Map<String, dynamic>>;
+typedef EJson<T> = Either<EitherError, Map<String, T>>;
 
 /// Future of Either of Error or Json
-typedef FEJson = Future<EJson>;
+typedef FEJson<T> = Future<EJson<T>>;
